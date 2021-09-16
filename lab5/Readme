@@ -7,7 +7,11 @@ Laboratório 05
 
 De acordo com o que foi pedido na entrega, esta pasta contém 3 estratégias similares de paralelismo, aplicadas as duas opções de programas pedidas. Assim foram entregues 6 arquivos .c implementando as soluções. Dentro dos arquivos estão presentes comentários que compõem uma explicação do que foi feito e por que tal foi redigido.
 
-Como tal, são encontrados;
+Também estão presente para alguns arquivos, observações de erros e dificuldades na forma de comentários.
+
+Dispondo que o enunciado pedia a escolha de uma opção, peço que seja feito pela opção 1, tido que o código op2_pthreads.c apresenta problemas
+
+Como tal, podem ser encontrados;
 
 	Para a opção 1:
 	-op1_fork.c ; *Utiliza segmentos de memória compartilhada para indice e array/elemento, e o fork para iterar os elementos, estruturando paralelismo em diferentes processos.
