@@ -1,0 +1,42 @@
+|------------------------------------------------------------------------------------------------|
+*****************
+Pedro Unello Neto
+41929713
+Laboratório 05
+*****************
+
+De acordo com o que foi pedido na entrega, esta pasta contém 3 estratégias similares de paralelismo, aplicadas as duas opções de programas pedidas. Assim foram entregues 6 arquivos .c implementando as soluções. Dentro dos arquivos estão presentes comentários que compõem uma explicação do que foi feito e por que tal foi redigido.
+
+Como tal, são encontrados;
+
+	Para a opção 1:
+	-op1_fork.c ; *Utiliza segmentos de memória compartilhada para indice e array/elemento, e o fork para iterar os elementos, estruturando paralelismo em diferentes processos.
+	-op1_pthreads.c ; *Utiliza e manipulas threads POSIX para iterar os elementos.
+	-op1_simd.c ; *Utiliza AVX intrinsics para supor o Single Instruction Multiple Data, assim processando os elementos do array de 256 bits simultaneamente.
+	
+	Para a opção 2:
+	-op2_fork.c ; *Mesma coisa do op1_fork.c , apenas se adequando ao que foi pedido neste ex
+	-op2_pthreads.c ; *Mesma coisa do op1_pthreads.c , apenas se adequando ao que foi pedido neste ex
+	-op2_simd.c ; *Mesma coisa do op1_simd.c , apenas se adequando ao que foi pedido neste ex
+	
+**OBS: Todos os arquivos foram compilados usando o gcc do linux na dist popOS, assim tendo
+gcc (Ubuntu 10.3.0-1ubuntu1) 10.3.0, 
+
+E para compilar os códigos op1_fork.c e op2_fork.c foi utilizado o comando: 
+$ gcc -o {nome} {arquivo}
+
+Para os códigos op1_pthreads.c e op2_pthreads.c foi utilizado o seguinte:
+$ gcc -pthread -o op1_pthreads op1_pthreads.c
+
+e
+
+$gcc -pthread -o op2_pthreads op2_pthreads.c
+
+Para os códigos op1_simd.c e op2_simd.c que foram compilados utilizando:
+$ gcc -march=haswell -mavx op1_simd.c 
+
+e 
+
+$ gcc -march=haswell -mavx op1_simd.c
+
+|------------------------------------------------------------------------------------------------|	
