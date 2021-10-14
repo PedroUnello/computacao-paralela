@@ -1,15 +1,29 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <pthread.h>
 
+#define tam 6; //Tamanho da matriz
 
-#define tam 6;
-#define qtdPthread 2;
+int n = tam; 
+int m = tam; 
+int thread_count = 3;
 
-int n, m, thread_count;
-n = tam; m = tam; thread_count = (tam)/(qtdPthread);
+int A[ 6 ][ 6 ] = { //M ixj para i = j
 
-void *Pth_mat_vect( void* rank ) {
+        {6,4,2,5,3,1},
+        {1,6,4,2,5,3},
+        {3,1,6,4,2,5},
+        {5,3,1,6,4,2},
+        {2,5,3,1,6,4},
+        {4,2,5,3,1,6}
+
+    }; //Exemplo dado: sequência de pares e impares 
+       //de 1 a 6 deslocando 1 posição a direita por linha (v circular)
+
+int x[6] = {4,1,9,2,9,7};
+float y[6]; //y = matriz A * vetor X
+
+void *Pth_mat_vect( void* rank ) { //Função dada no exercício.
     long my_rank = (long) rank;
     int i, j;
     int local_m = m/thread_count;
@@ -26,5 +40,21 @@ void *Pth_mat_vect( void* rank ) {
 }   /* Pth_mat_vect */
 
 int main(){
+
+    long thread;
+    pthread_t *thread_handles = malloc (thread_count * sizeof(pthread_t));
+    
+    for (thread = 0; thread < thread_count; thread++){
+        pthread_create(&thread_handles[thread], NULL, Pth_mat_vect, (void*) thread);
+    }
+    for (thread = 0; thread < thread_count; thread++){
+        pthread_join(thread_handles[thread], NULL);
+    }
+
+    free(thread_handles);
+
+    printf("y = { %f , %f , %f , %f , %f , %f }\n", 
+            y[0],y[1],y[2],y[3],y[4],y[5]);
+
     return 0;
 }
